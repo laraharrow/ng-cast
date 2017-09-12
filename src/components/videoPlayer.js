@@ -1,16 +1,16 @@
 angular.module('video-player')
 
-.component('videoPlayer', {
-  bindings: {
-    video: '<',
-  },
+  .controller('VideoPlayerController', function() {
+    this.videoUrl = () => {
+      return this.video ? `https://www.youtube.com/embed/${this.video.id.videoId}` : '';
+    };
+  })
+  .component('videoPlayer', {
 
-  templateUrl: 'src/templates/videoPlayer.html',
+    bindings: {
+      video: '<'
+    },
+    controller: 'VideoPlayerController',
+    templateUrl: 'src/templates/videoPlayer.html'
+  });
 
-  // controller: function() {    
-  //   this.srcUrl = (videoId) => {
-  //     //console.log('videoId', this.video.id.videoId);
-  //     return `https://www.youtube.com/embed/${this.video.id.videoId}`;
-  //   };
-  // }
-});

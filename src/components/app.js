@@ -1,28 +1,21 @@
 angular.module('video-player')
 
-.component('app', {
-  templateUrl: 'src/templates/app.html',
+  .controller('AppCtrl', function(youTube) {
 
-  controller: function($scope, youTube) {
-
-    this.youTube = youTube;
-
+    this.searchService = youTube;
     this.searchResults = (data) => {
       this.videos = data;
-      this.video = data[0];
+      this.currentVideo = this.videos[0];
     };
 
-    youTube.search(this.searchResults);
+    this.selectVideo = (video) => {
+      this.currentVideo = video;
+    };
 
-    $scope.$on('child', (event, video) => {
-      this.video = video;
-    });
+    youTube.search('acro-yoga', this.searchResults);
+  })
+  .component('app', {
 
-    $scope.$on('searchquery', (event, query) => {
-      this.videos = youTube.search(this.searchResults, query);
-      this.video = this.videos[0];
-    });
-
-  }
-  
-});
+    controller: 'AppCtrl',
+    templateUrl: 'src/templates/app.html'
+  });

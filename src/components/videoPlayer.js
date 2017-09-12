@@ -7,10 +7,10 @@ angular.module('video-player')
 
   templateUrl: 'src/templates/videoPlayer.html',
 
-  controller: function() {    
-    this.srcUrl = (videoId) => {
-      //console.log('videoId', this.video.id.videoId);
-      return `https://www.youtube.com/embed/${this.video.id.videoId}`;
-    };
-  }
+  // controller: function() {    
+  //   this.srcUrl = (videoId) => {
+  //     //console.log('videoId', this.video.id.videoId);
+  //     return `https://www.youtube.com/embed/${this.video.id.videoId}`;
+  //   };
+  // }
 });

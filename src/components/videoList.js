@@ -1,16 +1,14 @@
 angular.module('video-player')
 .component('videoList', {
   bindings: {
-    onClick: '<',
-    videos: '<',
-    video: '<'
+    videos: '<'
   },
 
   templateUrl: 'src/templates/videoList.html',
 
-  controller: function() {
+  controller: function($scope) {
     this.onClick = (idx) => {
-      this.video = videos[idx];
+      $scope.$emit('child', this.videos[idx]);
     };
   }
 });
